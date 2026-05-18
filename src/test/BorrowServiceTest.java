@@ -1,9 +1,8 @@
-package service;
+package test;
 
 import model.Book;
 import org.junit.jupiter.api.Test;
 import service.BorrowService;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BorrowServiceTest {
     @Test
