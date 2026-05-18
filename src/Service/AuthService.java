@@ -1,0 +1,8 @@
+package Service;
+
+public class AuthService {
+    public boolean login(String username, String password) {
+        return username.equals("anhDoMixi")
+                && password.equals("Khogadetem");
+    }
+}
