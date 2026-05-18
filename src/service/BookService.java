@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Model.Book;
+import model.Book;
 import java.util.ArrayList;
 
 public class BookService {

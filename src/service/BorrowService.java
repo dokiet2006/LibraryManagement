@@ -1,6 +1,6 @@
-package Service;
+package service;
 
-import Model.Book;
+import model.Book;
 
 public class BorrowService {
     public boolean borrowBook(Book b) {

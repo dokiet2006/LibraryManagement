@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Borrower {
     private int borrower_id;

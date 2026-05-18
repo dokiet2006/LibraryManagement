@@ -1,8 +1,7 @@
-package Main;
+package main;
 
-import Model.Book;
-import Model.Borrower;
-import Service.*;
+import model.Book;
+import service.*;
 
 import java.util.Scanner;
 

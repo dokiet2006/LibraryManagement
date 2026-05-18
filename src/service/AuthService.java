@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 public class AuthService {
     public boolean login(String username, String password) {

@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 public class FineService {
     private final int FINE_PER_DAY = 5000;
