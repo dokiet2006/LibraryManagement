@@ -7,11 +7,13 @@ public class Loan {
     private Borrower borrower;
     private LocalDate borrowDate;
     private LocalDate dueDate;
+    private LocalDate returnDate;
 
-    public Loan(Book book, Borrower borrower, LocalDate borrowDate, LocalDate dueDate) {
+    public Loan(Book book, Borrower borrower, LocalDate borrowDate, LocalDate dueDate, LocalDate returnDate) {
         this.book = book;
         this.borrower = borrower;
         this.borrowDate = borrowDate;
         this.dueDate = dueDate;
+        this.returnDate = returnDate;
     }
 }

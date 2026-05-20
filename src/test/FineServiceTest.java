@@ -1,38 +1,48 @@
 package test;
 
-import model.Book;
 import org.junit.jupiter.api.Test;
-import service.BorrowService;
 import service.FineService;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDate;
 
 class FineServiceTest {
 
     @Test
     void testFineNormal() {
         FineService fs = new FineService();
-        int result = fs.calculateFine(3);
+
+        LocalDate dueDate = LocalDate.of(2026,5,20);
+        LocalDate returnDate = LocalDate.of(2026,5,23);
+        int result = fs.calculateFine(dueDate, returnDate);
 
         if (result != 3 * FineService.FINE_PER_DAY) {
-            throw new RuntimeException("Expected: 15000, but got: " + result);
+            throw new RuntimeException("Expected: 15000");
         }
     }
 
     @Test
     void testFineZero() {
         FineService fs = new FineService();
-        assertEquals(0, fs.calculateFine(0));
-    }
 
-    @Test
-    void testFineNegative() {
-        FineService fs = new FineService();
-        int result = fs.calculateFine(-5);
+        LocalDate returnDate = LocalDate.of(2026,5,20);
+        LocalDate dueDate = LocalDate.of(2026,5,23);
+        int result = fs.calculateFine(dueDate, returnDate);
 
         if (result != 0) {
-            throw new RuntimeException("Expected: 0, but got: " + result);
+            throw new RuntimeException("Expected: 0");
         }
     }
 
+    @Test
+    void testFineEarlyReturne() {
+        FineService fs = new FineService();
+
+        LocalDate dueDate = LocalDate.of(2026,5,20);
+        LocalDate returnDate = LocalDate.of(2026,5,18);
+        int result = fs.calculateFine(dueDate, returnDate);
+
+        if (result != 0) {
+            throw new RuntimeException("Expected: 0");
+        }
+    }
 }
