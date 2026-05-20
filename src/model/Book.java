@@ -3,12 +3,12 @@ package model;
 public class Book {
     private int book_id;
     private String book_name;
-    private int quantity;
+    private boolean status;
 
-    public Book(int book_id, String book_name, int quantity) {
+    public Book(int book_id, String book_name, boolean status) {
         this.book_id = book_id;
         this.book_name = book_name;
-        this.quantity = quantity;
+        this.status = status;
     }
 
     public int getBook_id() {
@@ -19,11 +19,11 @@ public class Book {
         return book_name;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

@@ -1,12 +1,14 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Loan {
     private Book book;
     private Borrower borrower;
-    private String borrowDate;
-    private String dueDate;
+    private LocalDate borrowDate;
+    private LocalDate dueDate;
 
-    public Loan(Book book, Borrower borrower, String borrowDate, String dueDate) {
+    public Loan(Book book, Borrower borrower, LocalDate borrowDate, LocalDate dueDate) {
         this.book = book;
         this.borrower = borrower;
         this.borrowDate = borrowDate;

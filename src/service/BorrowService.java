@@ -4,8 +4,8 @@ import model.Book;
 
 public class BorrowService {
     public boolean borrowBook(Book b) {
-        if (b != null && b.getQuantity() > 0) {
-            b.setQuantity(b.getQuantity() - 1);
+        if (b != null &&  b.isStatus()) {
+            b.setStatus(false);
             return true;
         }
         return false;
@@ -13,7 +13,7 @@ public class BorrowService {
 
     public void returnBook(Book b) {
         if (b != null) {
-            b.setQuantity(b.getQuantity() + 1);
+            b.setStatus(true);
         }
     }
 }

@@ -1,7 +1,7 @@
 package service;
 
 public class FineService {
-    private final int FINE_PER_DAY = 5000;
+    public static final int FINE_PER_DAY = 5000;
 
     public int calculateFine(int days) {
         if (days <= 0) {

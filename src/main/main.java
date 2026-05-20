@@ -13,9 +13,9 @@ public class main {
         BorrowService borrowService = new BorrowService();
         FineService fineService = new FineService();
 
-        bookService.addBook(new Book(1, "Doraemon", 10));
-        bookService.addBook(new Book(2, "Conan", 15));
-        bookService.addBook(new Book(3, "Giáo trình Vật lý đại cương", 5));
+        bookService.addBook(new Book(1, "Doraemon", true));
+        bookService.addBook(new Book(2, "Conan", true));
+        bookService.addBook(new Book(3, "Giáo trình Vật lý đại cương", true));
 
         System.out.print("Username: ");
         String username = sc.next();
@@ -61,7 +61,5 @@ public class main {
                 System.out.println("The book is finished");
             }
         }
-
-
     }
 }
