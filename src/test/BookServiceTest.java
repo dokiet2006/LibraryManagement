@@ -9,13 +9,13 @@ class BookServiceTest {
     @Test
     void addBookDuplicate() {
         BookService bs = new BookService();
-        bs.addBook(new Book(2, "Conan", true));
+        bs.addBook("Conan");
     }
     @Test
     void findBook() {
         BookService bs = new BookService();
 
-        bs.addBook(new Book(1,"Doraemon",true));
+        bs.addBook("Doraemon");
 
         Book b = bs.findBook(1);
 
@@ -31,7 +31,7 @@ class BookServiceTest {
     void searchByName() {
         BookService bs = new BookService();
 
-        bs.addBook(new Book(1,"Doraemon",true));
+        bs.addBook("Doraemon");
 
         Book b = bs.searchByName("doraemon");
 

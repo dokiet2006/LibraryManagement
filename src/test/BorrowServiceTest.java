@@ -7,7 +7,7 @@ import service.BorrowService;
 class BorrowServiceTest {
     @Test
     void testBorrowSuccess() {
-        Book b = new Book(1,"Doraemon", true);
+        Book b = new Book("Doraemon");
         BorrowService service = new BorrowService();
 
         boolean result = service.borrowBook(b);
@@ -23,7 +23,7 @@ class BorrowServiceTest {
 
     @Test
     void testBorrowFail() {
-        Book b = new Book(1,"Doraemon",false);
+        Book b = new Book("Doraemon");
         BorrowService service =  new BorrowService();
 
         boolean result = service.borrowBook(b);
@@ -35,7 +35,7 @@ class BorrowServiceTest {
 
     @Test
     void testReturnBook() {
-        Book b = new Book(1,"Doraemon",false);
+        Book b = new Book("Doraemon");
         BorrowService service = new BorrowService();
 
         service.returnBook(b);

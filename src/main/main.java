@@ -3,6 +3,7 @@ package main;
 import model.Book;
 import service.*;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class main {
@@ -13,9 +14,9 @@ public class main {
         BorrowService borrowService = new BorrowService();
         FineService fineService = new FineService();
 
-        bookService.addBook(new Book(1, "Doraemon", true));
-        bookService.addBook(new Book(2, "Conan", true));
-        bookService.addBook(new Book(3, "Giáo trình Vật lý đại cương", true));
+        bookService.addBook("Doraemon");
+        bookService.addBook("Conan");
+        bookService.addBook("Boku no Pico");
 
         System.out.print("Username: ");
         String username = sc.next();
@@ -23,7 +24,7 @@ public class main {
         System.out.print("Password: ");
         String password = sc.next();
 
-        if(!auth.login(username, password)) {
+        if (!auth.login(username, password)) {
             System.out.println("Login fail");
             return;
         }
@@ -31,35 +32,52 @@ public class main {
         System.out.println("Login Success");
         bookService.showBook();
 
-        System.out.println("Enter book ID:");
-        int id = sc.nextInt();
+        while (true) {
+            System.out.println("\n===== MENU =====");
+            System.out.println("1. Add book");
+            System.out.println("2. Borrow book");
+            System.out.println("0. Exit");
+            System.out.print("Choose: ");
 
-        Book b = bookService.findBook(id);
+            int choice = sc.nextInt();
+            sc.nextLine();
 
-        if(borrowService.borrowBook(b)) {
-            System.out.println("Borrowing Success");
-        } else {
-            System.out.println("The book is finished");
-        }
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter book name: ");
+                    String newBook = sc.nextLine();
 
-        bookService.showBook();
-        System.out.println("Do you want to borrow more?");
-        System.out.println("Yes/No ?");
-        String reply = sc.next();
-        if (reply.equalsIgnoreCase("No")) {
-            System.out.println("Lượn");
-        } else if (reply.equalsIgnoreCase("Yes")) {
-            bookService.showBook();
-            System.out.println("Enter book ID:");
-            int id1 = sc.nextInt();
+                    if (bookService.addBook(newBook)) {
+                        System.out.println("Add book success");
+                    } else {
+                        System.out.println("Book already exists");
+                    }
+                    break;
 
-            Book b1 = bookService.findBook(id1);
+                case 2:
+                    bookService.showBook();
 
-            if(borrowService.borrowBook(b1)) {
-                System.out.println("Borrowing Success");
-            } else {
-                System.out.println("The book is finished");
+                    System.out.print("Enter book ID: ");
+                    int id = sc.nextInt();
+
+                    Book b = bookService.findBook(id);
+
+                    if (borrowService.borrowBook(b)) {
+                        System.out.println("Borrow success");
+                        System.out.println("Borrow Date: " + LocalDate.now());
+                    } else {
+                        System.out.println("Book unavailable");
+                    }
+                    break;
+
+                case 0:
+                    System.out.println("Goodbye");
+                    return;
+
+                default:
+                    System.out.println("Invalid choice");
             }
+            bookService.showBook();
         }
     }
 }

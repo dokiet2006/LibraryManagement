@@ -6,12 +6,20 @@ import java.util.ArrayList;
 public class BookService {
     private ArrayList<Book> books = new ArrayList<>();
 
-    public boolean addBook(Book newBook) {
+    public boolean addBook(String bookName) {
         for (Book b : books) {
-            if (b.getBook_id() == newBook.getBook_id()) {
+            if (b.getBook_name().equalsIgnoreCase(bookName)) {
                 return false;
             }
         }
+        Book newBook = new Book(bookName);
+
+        int newBook_id = 1;
+        if (!books.isEmpty()) {
+            newBook_id = books.get(books.size() - 1).getBook_id() + 1;
+        }
+
+        newBook.setBook_id(newBook_id);
         books.add(newBook);
         return true;
     }

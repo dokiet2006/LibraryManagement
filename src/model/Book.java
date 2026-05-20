@@ -5,14 +5,17 @@ public class Book {
     private String book_name;
     private boolean status;
 
-    public Book(int book_id, String book_name, boolean status) {
-        this.book_id = book_id;
+    public Book(String book_name) {
         this.book_name = book_name;
-        this.status = status;
+        this.status = true;
     }
 
     public int getBook_id() {
         return book_id;
+    }
+
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
     }
 
     public String getBook_name() {
